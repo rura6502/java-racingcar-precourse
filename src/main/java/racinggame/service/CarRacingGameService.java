@@ -1,5 +1,6 @@
 package racinggame.service;
 
+import static racinggame.service.message.CarRacingGameMessage.*;
 import static racinggame.service.message.MessagePrinter.*;
 
 import nextstep.utils.Console;
@@ -24,7 +25,7 @@ public class CarRacingGameService {
 	public Cars getCarsFromUserInput() {
 		String inputCars;
 		do {
-			println("경주할 자동차 이름을 입력하세요.(이름은 쉼표(,) 기준으로 구분)");
+			println(USER_INPUT_CAR_NAMES);
 			inputCars = Console.readLine();
 		} while (!isValidInputCars(inputCars));
 		return makeCars(inputCars);
@@ -33,7 +34,7 @@ public class CarRacingGameService {
 	public int getTryCountFromUserInput() {
 		String inputTryCount;
 		do {
-			println("시도할 횟수는 몇회인가요?");
+			println(USER_INPUT_TRY_COUNT);
 			inputTryCount = Console.readLine();
 		} while (!isValidInputTryCount(inputTryCount));
 		return Integer.parseInt(inputTryCount);
@@ -49,7 +50,7 @@ public class CarRacingGameService {
 		if (inputTryCount.matches("^\\d+$")) {
 			return true;
 		}
-		error("숫자만 입력해주세요.");
+		error(ERROR_ONLY_NUMBER);
 		return false;
 	}
 
@@ -57,7 +58,7 @@ public class CarRacingGameService {
 		if (inputCars.matches("^(\\s*\\w+\\s*)(,\\s*\\w+\\s*)*$")) {
 			return true;
 		}
-		error("쉼표로 구분된 차 이름 목록을 입력해주세요. (예. car1,car2,car3)");
+		error(ERROR_ONLY_CAR_NAMES_WITH_COMMA_SEPERATOR);
 		return false;
 	}
 

@@ -1,5 +1,7 @@
 package racinggame.service.message;
 
+import static racinggame.service.message.CarRacingGameMessage.*;
+
 import java.util.Collection;
 
 import racinggame.domain.car.Car;
@@ -21,19 +23,17 @@ public class MessagePrinter {
 	}
 
 	public static void error(String message) {
-		System.out.println(String.format("[ERROR]" + message));
+		System.out.println(ERROR_TAG + message);
 	}
 
 	public static void print(CarRacingRecords records) {
 		println();
-		println("실행 결과");
+		println(PRINT_RESULT);
 		for (CarRacingRecord record : records.getRecords()) {
 			print(record);
 			println();
 		}
-		println(
-			String.format("최종 우승자는 %s 입니다."
-				, joinWinnersCarName(records.getWinners())));
+		println(getWinnerPrintMessage(records.getWinners()));
 	}
 
 	public static void print(CarRacingRecord record) {
@@ -43,7 +43,13 @@ public class MessagePrinter {
 	}
 
 	public static void print(Car car) {
-		println(String.format("%s : %s", car.getName(), positionToDash(car.getPosition())));
+		println(String.format(PRINT_CAR_AND_SCORE_FORMAT
+			, car.getName(), positionToDash(car.getPosition())));
+	}
+
+	private static String getWinnerPrintMessage(Collection<Car> winners) {
+		return String.format(PRINT_WINNER_FORMAT, joinWinnersCarName(winners));
+
 	}
 
 	private static String positionToDash(int position) {
@@ -55,10 +61,11 @@ public class MessagePrinter {
 	}
 
 	private static String joinWinnersCarName(Collection<Car> winners) {
-		String joinedWinnersCarName = "";
+		StringBuilder joinedWinnersCarNameBuilder = new StringBuilder();
 		for (Car car : winners) {
-			joinedWinnersCarName += car.getName() + ",";
+			joinedWinnersCarNameBuilder.append(car.getName()).append(",");
 		}
-		return joinedWinnersCarName.substring(0, joinedWinnersCarName.length() - 1);
+		return joinedWinnersCarNameBuilder.substring(0, joinedWinnersCarNameBuilder.length() - 1);
 	}
+
 }
