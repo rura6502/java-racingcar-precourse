@@ -49,9 +49,9 @@ public class CarRacingGameTest {
 
 			game.runOneTime();
 
-			assertThat(cars.getByName("car1").getPosition()).isZero();
-			assertThat(cars.getByName("car2").getPosition()).isEqualTo(1);
-			assertThat(cars.getByName("car3").getPosition()).isEqualTo(1);
+			assertThat(cars.getCarByName("car1").getPosition()).isZero();
+			assertThat(cars.getCarByName("car2").getPosition()).isEqualTo(1);
+			assertThat(cars.getCarByName("car3").getPosition()).isEqualTo(1);
 		}
 	}
 
@@ -71,13 +71,17 @@ public class CarRacingGameTest {
 			CarRacingRecord record1 = game.runOneTime();
 			CarRacingRecord record2 = game.runOneTime();
 
-			assertThat(record1.getCars().getByName("car1").getPosition()).isZero();
-			assertThat(record1.getCars().getByName("car2").getPosition()).isEqualTo(1);
-			assertThat(record1.getCars().getByName("car3").getPosition()).isEqualTo(1);
+			assertThat(record1.getCars().getCarByName("car1").getPosition()).isZero();
+			assertThat(record1.getCars().getCarByName("car2").getPosition()).isEqualTo(1);
+			assertThat(record1.getCars().getCarByName("car3").getPosition()).isEqualTo(1);
 
-			assertThat(record2.getCars().getByName("car1").getPosition()).isZero();
-			assertThat(record2.getCars().getByName("car2").getPosition()).isEqualTo(1);
-			assertThat(record2.getCars().getByName("car3").getPosition()).isEqualTo(2);
+			assertThat(record2.getCars().getCarByName("car1").getPosition()).isZero();
+			assertThat(record2.getCars().getCarByName("car2").getPosition()).isEqualTo(1);
+			assertThat(record2.getCars().getCarByName("car3").getPosition()).isEqualTo(2);
+
+		}
+	}
+
 
 		}
 	}

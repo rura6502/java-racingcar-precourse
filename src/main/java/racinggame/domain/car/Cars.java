@@ -32,7 +32,7 @@ public class Cars {
 		return this;
 	}
 
-	public Car getByName(String carName) {
+	public Car getCarByName(String carName) {
 
 		if (!cars.containsKey(carName) || cars.get(carName) == null) {
 			throw new IllegalArgumentException(
