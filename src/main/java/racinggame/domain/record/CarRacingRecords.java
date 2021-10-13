@@ -36,4 +36,8 @@ public class CarRacingRecords {
 		CarRacingRecord lastRecord = records.get(records.size() - 1);
 		return lastRecord.getWinners();
 	}
+
+	public List<CarRacingRecord> getRecords() {
+		return records;
+	}
 }
