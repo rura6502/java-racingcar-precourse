@@ -1,5 +1,7 @@
 package racinggame.domain.car;
 
+import java.util.Objects;
+
 public class Car {
 
 	private final String name;
@@ -9,12 +11,16 @@ public class Car {
 	private static final int CAR_NAME_MAX_LENGTH = 5;
 
 	public Car(String name) {
+		this(name, 0);
+	}
+
+	public Car(String name, int position) {
 
 		if (name == null || !isValidName(name)) {
 			throw new IllegalArgumentException("자동차 이름은 null 또는 빈칸이 아닌 5자 이하 문자만 가능합니다.");
 		}
-
 		this.name = name.trim();
+		this.position = position;
 	}
 
 	public Car move(CarCommand carCommand) {
@@ -46,9 +52,24 @@ public class Car {
 	}
 
 	private boolean isValidName(String name) {
-		if (name.trim().length() == 0)
+		if (name.length() == 0)
 			return false;
 
 		return name.length() <= CAR_NAME_MAX_LENGTH;
+	}
+
+	@Override
+	public boolean equals(Object o) {
+		if (this == o)
+			return true;
+		if (o == null || getClass() != o.getClass())
+			return false;
+		Car car = (Car)o;
+		return name.equals(car.name);
+	}
+
+	@Override
+	public int hashCode() {
+		return Objects.hash(name);
 	}
 }

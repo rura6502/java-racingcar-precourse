@@ -1,10 +1,9 @@
 package racinggame.domain.game;
 
-import java.util.Collection;
-
 import nextstep.utils.Randoms;
 import racinggame.domain.car.Car;
 import racinggame.domain.car.CarCommand;
+import racinggame.domain.record.CarRacingRecord;
 
 public class CarRacingGame {
 
@@ -14,12 +13,12 @@ public class CarRacingGame {
 		this.config = config;
 	}
 
-	public Collection<Car> runOneTime() {
+	public CarRacingRecord runOneTime() {
 
-		for (Car car : config.getCars()) {
+		for (Car car : config.getCars().getAllCars()) {
 			car.move(createCommand(this.random()));
 		}
-		return config.getCars();
+		return new CarRacingRecord(config.getCars());
 	}
 
 	public static CarCommand createCommand(int random) {

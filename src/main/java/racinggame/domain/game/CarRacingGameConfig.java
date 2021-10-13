@@ -1,16 +1,14 @@
 package racinggame.domain.game;
 
-import java.util.List;
-
-import racinggame.domain.car.Car;
+import racinggame.domain.car.Cars;
 
 public class CarRacingGameConfig {
 
 	private int tryCount;
 
-	private List<Car> cars;
+	private Cars cars;
 
-	public CarRacingGameConfig(int tryCount, List<Car> cars) {
+	public CarRacingGameConfig(int tryCount, Cars cars) {
 		this.tryCount = tryCount;
 		this.cars = cars;
 	}
@@ -19,7 +17,7 @@ public class CarRacingGameConfig {
 		return tryCount;
 	}
 
-	public List<Car> getCars() {
+	public Cars getCars() {
 		return cars;
 	}
 }

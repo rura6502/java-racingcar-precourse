@@ -3,10 +3,6 @@ package racinggame.domain;
 import static org.assertj.core.api.Assertions.*;
 import static org.mockito.Mockito.*;
 
-import java.util.ArrayList;
-import java.util.Collection;
-import java.util.List;
-
 import org.junit.jupiter.api.DisplayName;
 import org.junit.jupiter.api.Test;
 import org.junit.jupiter.params.ParameterizedTest;
@@ -14,6 +10,11 @@ import org.junit.jupiter.params.provider.ValueSource;
 import org.mockito.MockedStatic;
 
 import nextstep.utils.Randoms;
+import racinggame.domain.car.CarCommand;
+import racinggame.domain.car.Cars;
+import racinggame.domain.game.CarRacingGame;
+import racinggame.domain.game.CarRacingGameConfig;
+import racinggame.domain.record.CarRacingRecord;
 
 public class CarRacingGameTest {
 
@@ -34,13 +35,9 @@ public class CarRacingGameTest {
 	}
 
 	@Test
-	void 단일_게임_진행_테스트() {
+	void 단일_게임_진행_차_포지션_결과_테스트() {
 
-		Car car1 = new Car("car1");
-		Car car2 = new Car("car2");
-		Car car3 = new Car("car3");
-
-		Collection<Car> cars = craeteCars(car1, car2, car3);
+		Cars cars = new Cars("car1", "car2", "car3");
 
 		CarRacingGameConfig config = new CarRacingGameConfig(3, cars);
 		CarRacingGame game = new CarRacingGame(config);
@@ -51,20 +48,37 @@ public class CarRacingGameTest {
 				.thenReturn(1, 4, 9);
 
 			game.runOneTime();
-			game.runOneTime();
 
-			assertThat(car1.getPosition()).isZero();
-			assertThat(car2.getPosition()).isEqualTo(1);
-			assertThat(car3.getPosition()).isEqualTo(2);
+			assertThat(cars.getByName("car1").getPosition()).isZero();
+			assertThat(cars.getByName("car2").getPosition()).isEqualTo(1);
+			assertThat(cars.getByName("car3").getPosition()).isEqualTo(1);
 		}
-
 	}
 
-	private Collection<Car> craeteCars(Car... cars) {
-		List<Car> list = new ArrayList<>();
-		for (Car car : cars) {
-			list.add(car);
+	@Test
+	void 단일_게임_결과_CarRacingRecord_반환_테스트() {
+
+		Cars cars = new Cars("car1", "car2", "car3");
+
+		CarRacingGameConfig config = new CarRacingGameConfig(3, cars);
+		CarRacingGame game = new CarRacingGame(config);
+
+		try (final MockedStatic<Randoms> mockRandoms = mockStatic(Randoms.class)) {
+			mockRandoms
+				.when(() -> Randoms.pickNumberInRange(anyInt(), anyInt()))
+				.thenReturn(1, 4, 9, 0, 3, 7);
+
+			CarRacingRecord record1 = game.runOneTime();
+			CarRacingRecord record2 = game.runOneTime();
+
+			assertThat(record1.getCars().getByName("car1").getPosition()).isZero();
+			assertThat(record1.getCars().getByName("car2").getPosition()).isEqualTo(1);
+			assertThat(record1.getCars().getByName("car3").getPosition()).isEqualTo(1);
+
+			assertThat(record2.getCars().getByName("car1").getPosition()).isZero();
+			assertThat(record2.getCars().getByName("car2").getPosition()).isEqualTo(1);
+			assertThat(record2.getCars().getByName("car3").getPosition()).isEqualTo(2);
+
 		}
-		return list;
 	}
 }
