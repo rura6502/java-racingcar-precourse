@@ -50,6 +50,7 @@ public class Car {
 	}
 
 	private boolean isValidName(String name) {
+		name = name.trim();
 		if (name.length() == 0)
 			return false;
 
