@@ -45,14 +45,17 @@ public class Cars {
 	}
 
 	public Collection<Car> getCarsByPosition(int position) {
-		List<Car> cars = new ArrayList<>();
-		//!TODO warning, depth level is 2
+		List<Car> carsIsThisPosition = new ArrayList<>();
 		for (Car car : getAllCars()) {
-			if (car.getPosition() == position) {
-				cars.add(car);
-			}
+			putCarIsThisPositionTo(carsIsThisPosition, car, position);
 		}
-		return cars;
+		return carsIsThisPosition;
+	}
+
+	private void putCarIsThisPositionTo(List<Car> to, Car car, int position) {
+		if (car.getPosition() == position) {
+			to.add(car);
+		}
 	}
 
 	public Collection<Car> getAllCars() {
