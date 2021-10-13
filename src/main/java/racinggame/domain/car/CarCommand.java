@@ -1,4 +1,4 @@
-package racinggame.domain;
+package racinggame.domain.car;
 
 public enum CarCommand {
 

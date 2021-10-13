@@ -1,8 +1,10 @@
-package racinggame.domain;
+package racinggame.domain.game;
 
 import java.util.Collection;
 
 import nextstep.utils.Randoms;
+import racinggame.domain.car.Car;
+import racinggame.domain.car.CarCommand;
 
 public class CarRacingGame {
 
