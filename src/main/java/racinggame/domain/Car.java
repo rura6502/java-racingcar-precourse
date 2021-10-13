@@ -16,6 +16,27 @@ public class Car {
 		this.name = name.trim();
 	}
 
+	/**
+	 *
+	 * @return the position after forward
+	 */
+	public int forwardOneStep() {
+		return this.forward(1);
+	}
+
+	private int forward(int step) {
+		position += step;
+		return position;
+	}
+
+	public String getName() {
+		return name;
+	}
+
+	public int getPosition() {
+		return position;
+	}
+
 	private boolean isValidName(String name) {
 		if (name.trim().length() == 0)
 			return false;
