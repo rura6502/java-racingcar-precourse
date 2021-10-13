@@ -25,7 +25,6 @@ public class CarRacingGame {
 	}
 
 	public CarRacingRecord runOneTime() {
-
 		for (Car car : config.getCars().getAllCars()) {
 			car.move(createCommand(this.random()));
 		}

@@ -27,7 +27,6 @@ public class CarRacingGameTest {
 	@ValueSource(ints = {0, 1, 2, 3})
 	@DisplayName("랜덤 숫자 0~3 일 경우 STOP 명령어 생성 테스트")
 	void 멈춤_명령어_생성_테스트(int value) {
-
 		assertThat(CarRacingGame.createCommand(value)).isEqualTo(CarCommand.STOP);
 	}
 
@@ -35,14 +34,12 @@ public class CarRacingGameTest {
 	@ValueSource(ints = {4, 5, 6, 7, 8, 9})
 	@DisplayName("랜덤 숫자 4~9 일 경우 FORWARD 명령어 생성 테스트")
 	void 전진_명령어_생성_테스트(int value) {
-
 		assertThat(CarRacingGame.createCommand(value)).isEqualTo(CarCommand.FORWARD);
 	}
 
 	@Test
 	@DisplayName("단일 게임 결과 포지션 값 증가 정상 테스트")
 	void 단일_게임_진행_차_포지션_결과_테스트() {
-
 		Cars cars = new Cars("car1", "car2", "car3");
 
 		CarRacingGameConfig config = new CarRacingGameConfig(3, cars);
@@ -64,7 +61,6 @@ public class CarRacingGameTest {
 	@Test
 	@DisplayName("단일 게임 결과 레코드 값 정상 기록 확인 테스트")
 	void 단일_게임_결과_CarRacingRecord_반환_테스트() {
-
 		Cars cars = new Cars("car1", "car2", "car3");
 
 		CarRacingGameConfig config = new CarRacingGameConfig(3, cars);
@@ -85,14 +81,12 @@ public class CarRacingGameTest {
 			assertThat(record2.getCars().getCarByName("car1").getPosition()).isZero();
 			assertThat(record2.getCars().getCarByName("car2").getPosition()).isEqualTo(1);
 			assertThat(record2.getCars().getCarByName("car3").getPosition()).isEqualTo(2);
-
 		}
 	}
 
 	@Test
 	@DisplayName("전체 게임(다중 횟수) 게임 결과 레코드 값 정상 기록 확인 테스트")
 	void 전체_게임_결과_CarRacingRecords_반환_테스트() {
-
 		Cars cars = new Cars("car1", "car2", "car3");
 
 		CarRacingGameConfig config = new CarRacingGameConfig(3, cars);
@@ -127,7 +121,6 @@ public class CarRacingGameTest {
 			expectedWinners.add(new Car("car2", 2));
 			expectedWinners.add(new Car("car3", 2));
 			assertThat(records.getWinners()).hasSameElementsAs(expectedWinners);
-
 		}
 	}
 }

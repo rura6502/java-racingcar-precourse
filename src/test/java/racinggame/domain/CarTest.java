@@ -19,7 +19,6 @@ public class CarTest {
 	@MethodSource("carNameTestValueSource")
 	@DisplayName("차 이름 글자수 유효성 테스트 : 1~5글자")
 	void 차_이름_글자_수_유효성_체크(String carName) {
-
 		assertThatExceptionOfType(
 			IllegalArgumentException.class).isThrownBy(() -> new Car(carName));
 	}

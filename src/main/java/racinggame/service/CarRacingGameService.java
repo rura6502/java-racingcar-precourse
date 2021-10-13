@@ -67,7 +67,6 @@ public class CarRacingGameService {
 			return false;
 		}
 		return true;
-
 	}
 
 	private boolean isValidInputCars(String inputCars) {
@@ -77,5 +76,4 @@ public class CarRacingGameService {
 		error(ERROR_ONLY_CAR_NAMES_WITH_COMMA_SEPARATOR);
 		return false;
 	}
-
 }

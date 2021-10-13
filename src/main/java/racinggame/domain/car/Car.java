@@ -15,7 +15,6 @@ public class Car {
 	}
 
 	public Car(String name, int position) {
-
 		if (name == null || !isValidName(name)) {
 			throw new IllegalArgumentException("자동차 이름은 null 또는 빈칸이 아닌 5자 이하 문자만 가능합니다.");
 		}
@@ -57,18 +56,21 @@ public class Car {
 
 	private boolean isValidName(String name) {
 		name = name.trim();
-		if (name.length() == 0)
+		if (name.length() == 0) {
 			return false;
+		}
 
 		return name.length() <= CAR_NAME_MAX_LENGTH;
 	}
 
 	@Override
 	public boolean equals(Object o) {
-		if (this == o)
+		if (this == o) {
 			return true;
-		if (o == null || getClass() != o.getClass())
+		}
+		if (o == null || getClass() != o.getClass()) {
 			return false;
+		}
 		Car car = (Car)o;
 		return position == car.position && name.equals(car.name);
 	}

@@ -32,7 +32,6 @@ public class CarRacingRecords {
 	}
 
 	public Collection<Car> getWinners() {
-
 		CarRacingRecord lastRecord = records.get(records.size() - 1);
 		return lastRecord.getWinners();
 	}
