@@ -42,7 +42,7 @@ public class CarRacingGameTest {
 
 		Collection<Car> cars = craeteCars(car1, car2, car3);
 
-		CarRacingGrameConfig config = new CarRacingGrameConfig(3, cars);
+		CarRacingGameConfig config = new CarRacingGameConfig(3, cars);
 		CarRacingGame game = new CarRacingGame(config);
 
 		try (final MockedStatic<Randoms> mockRandoms = mockStatic(Randoms.class)) {

@@ -6,9 +6,9 @@ import nextstep.utils.Randoms;
 
 public class CarRacingGame {
 
-	private CarRacingGrameConfig config;
+	private CarRacingGameConfig config;
 
-	public CarRacingGame(CarRacingGrameConfig config) {
+	public CarRacingGame(CarRacingGameConfig config) {
 		this.config = config;
 	}
 
