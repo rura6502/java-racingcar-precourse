@@ -51,6 +51,10 @@ public class Car {
 		return position;
 	}
 
+	public boolean isThisPosition(int position) {
+		return this.position == position;
+	}
+
 	private boolean isValidName(String name) {
 		name = name.trim();
 		if (name.length() == 0)

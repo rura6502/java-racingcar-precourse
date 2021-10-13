@@ -106,19 +106,19 @@ public class CarRacingGameTest {
 			CarRacingRecords records = game.run();
 
 			/* try : first */
-			assertThat(records.getRecordByTryStep(0).getCars().getCarByName("car1").getPosition()).isZero();
-			assertThat(records.getRecordByTryStep(0).getCars().getCarByName("car2").getPosition()).isEqualTo(1);
-			assertThat(records.getRecordByTryStep(0).getCars().getCarByName("car3").getPosition()).isEqualTo(1);
+			assertThat(records.getRecordByTryStep(0).getCarByName("car1").isThisPosition(0)).isTrue();
+			assertThat(records.getRecordByTryStep(0).getCarByName("car2").isThisPosition(1)).isTrue();
+			assertThat(records.getRecordByTryStep(0).getCarByName("car3").isThisPosition(1)).isTrue();
 
 			/* try : second */
-			assertThat(records.getRecordByTryStep(1).getCars().getCarByName("car1").getPosition()).isZero();
-			assertThat(records.getRecordByTryStep(1).getCars().getCarByName("car2").getPosition()).isEqualTo(1);
-			assertThat(records.getRecordByTryStep(1).getCars().getCarByName("car3").getPosition()).isEqualTo(2);
+			assertThat(records.getRecordByTryStep(1).getCarByName("car1").isThisPosition(0)).isTrue();
+			assertThat(records.getRecordByTryStep(1).getCarByName("car2").isThisPosition(1)).isTrue();
+			assertThat(records.getRecordByTryStep(1).getCarByName("car3").isThisPosition(2)).isTrue();
 
 			/* try : third */
-			assertThat(records.getRecordByTryStep(2).getCars().getCarByName("car1").getPosition()).isEqualTo(1);
-			assertThat(records.getRecordByTryStep(2).getCars().getCarByName("car2").getPosition()).isEqualTo(2);
-			assertThat(records.getRecordByTryStep(2).getCars().getCarByName("car3").getPosition()).isEqualTo(2);
+			assertThat(records.getRecordByTryStep(2).getCarByName("car1").isThisPosition(1)).isTrue();
+			assertThat(records.getRecordByTryStep(2).getCarByName("car2").isThisPosition(2)).isTrue();
+			assertThat(records.getRecordByTryStep(2).getCarByName("car3").isThisPosition(2)).isTrue();
 
 			List<Car> expectedWinners = new ArrayList<>();
 			expectedWinners.add(new Car("car2", 2));

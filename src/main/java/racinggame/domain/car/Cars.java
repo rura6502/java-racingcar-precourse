@@ -53,7 +53,7 @@ public class Cars {
 	}
 
 	private void putCarIsThisPositionTo(List<Car> to, Car car, int position) {
-		if (car.getPosition() == position) {
+		if (car.isThisPosition(position)) {
 			to.add(car);
 		}
 	}

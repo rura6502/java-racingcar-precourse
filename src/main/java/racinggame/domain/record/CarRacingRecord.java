@@ -23,6 +23,10 @@ public class CarRacingRecord {
 		return this.getCars().getCarsByPosition(this.longestPosition);
 	}
 
+	public Car getCarByName(String carName) {
+		return cars.getCarByName(carName);
+	}
+
 	public Cars getCars() {
 		return cars;
 	}
