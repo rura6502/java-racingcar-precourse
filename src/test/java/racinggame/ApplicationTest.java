@@ -68,11 +68,7 @@ public class ApplicationTest extends NSTest {
 	@DisplayName("유저 입력 차 이름 빈칸 값 에러 메세지 출력 테스트")
 	@ValueSource(strings = {
 		" ", " ,", ", ", ",,", " , , ,"
-		, "car1,car2,"
-		, "car1,,"
 		, "car1,,car3"
-		, ",car2,car3"
-		, ",,car3"
 	})
 	void 유저_입력_차_이름_빈칸_에러_메세지_출력(String userInputCars) {
 		assertSimpleTest(() -> {

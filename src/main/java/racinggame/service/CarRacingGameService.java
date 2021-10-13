@@ -28,6 +28,7 @@ public class CarRacingGameService {
 		do {
 			println(USER_INPUT_CAR_NAMES);
 			inputCars = Console.readLine();
+			inputCars = removePrePostSeparator(inputCars);
 		} while (!isValidInputCars(inputCars));
 		return makeCars(inputCars);
 	}
@@ -39,6 +40,17 @@ public class CarRacingGameService {
 			inputTryCount = Console.readLine();
 		} while (!isValidInputTryCount(inputTryCount));
 		return Integer.parseInt(inputTryCount);
+	}
+
+	private String removePrePostSeparator(String inputCars) {
+		String removedInputCars = inputCars;
+		while (removedInputCars.startsWith(",")) {
+			removedInputCars = removedInputCars.substring(1);
+		}
+		while (removedInputCars.endsWith(",")) {
+			removedInputCars = removedInputCars.substring(0, removedInputCars.length() - 1);
+		}
+		return removedInputCars;
 	}
 
 	private Cars makeCars(String input) {
