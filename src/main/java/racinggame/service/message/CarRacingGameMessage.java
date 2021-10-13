@@ -6,8 +6,8 @@ public class CarRacingGameMessage {
 	public static final String USER_INPUT_TRY_COUNT = "시도할 횟수는 몇회인가요?";
 
 	public static final String ERROR_ONLY_NUMBER = "숫자만 입력해주세요.";
-	public static final String ERROR_ONLY_CAR_NAMES_WITH_COMMA_SEPERATOR =
-		"쉼표로 구분된 차 이름 목록을 입력해주세요. (예. car1,car2,car3)";
+	public static final String ERROR_ONLY_CAR_NAMES_WITH_COMMA_SEPARATOR =
+		"쉼표로 구분된 차 이름(1~5글자) 목록을 입력해주세요. (예. car1,car2,car3)";
 	public static final String ERROR_TAG = "[ERROR] ";
 
 	public static final String PRINT_RESULT = "실행 결과";

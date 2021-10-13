@@ -62,7 +62,7 @@ public class CarRacingGameService {
 		if (inputCars.matches(INPUT_CARS_REGEX)) {
 			return true;
 		}
-		error(ERROR_ONLY_CAR_NAMES_WITH_COMMA_SEPERATOR);
+		error(ERROR_ONLY_CAR_NAMES_WITH_COMMA_SEPARATOR);
 		return false;
 	}
 
