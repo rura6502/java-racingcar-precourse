@@ -1,5 +1,7 @@
 package racinggame.domain.game;
 
+import static racinggame.Application.*;
+
 import nextstep.utils.Randoms;
 import racinggame.domain.car.Car;
 import racinggame.domain.car.CarCommand;
@@ -31,7 +33,7 @@ public class CarRacingGame {
 	}
 
 	public static CarCommand createCommand(int random) {
-		if (random >= 4) {
+		if (random >= FORWARD_STOP_CRITERIA) {
 			return CarCommand.FORWARD;
 		}
 		return CarCommand.STOP;
