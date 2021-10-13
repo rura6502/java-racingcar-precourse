@@ -9,8 +9,9 @@ public class Car {
 	private static final int CAR_NAME_MAX_LENGTH = 5;
 
 	public Car(String name) {
-		if (!isValidName(name)) {
-			throw new IllegalArgumentException("자동차 이름은 빈칸이 아닌 5자 이하 문자만 가능합니다.");
+
+		if (name == null || !isValidName(name)) {
+			throw new IllegalArgumentException("자동차 이름은 null 또는 빈칸이 아닌 5자 이하 문자만 가능합니다.");
 		}
 
 		this.name = name.trim();
