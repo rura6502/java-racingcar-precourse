@@ -16,11 +16,18 @@ public class Car {
 		this.name = name.trim();
 	}
 
+	public Car move(CarCommand carCommand) {
+		if (carCommand.equals(CarCommand.FORWARD)) {
+			this.forwardOneStep();
+		}
+		return this;
+	}
+
 	/**
 	 *
 	 * @return the position after forward
 	 */
-	public int forwardOneStep() {
+	private int forwardOneStep() {
 		return this.forward(1);
 	}
 

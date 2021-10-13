@@ -23,8 +23,9 @@ public class CarTest {
 	@Test
 	void 차_전진_카운팅_테스트() {
 		Car car = new Car("test1");
-		car.forwardOneStep();
-		car.forwardOneStep();
+		car.move(CarCommand.FORWARD);        // +1
+		car.move(CarCommand.FORWARD);        // +1
+		car.move(CarCommand.STOP);           // +0
 
 		assertThat(car.getPosition()).isEqualTo(2);
 	}
