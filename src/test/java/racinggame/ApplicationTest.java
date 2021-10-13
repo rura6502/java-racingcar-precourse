@@ -45,13 +45,13 @@ public class ApplicationTest extends NSTest {
 	void 전진_정지_참가자_세_명_3_회_우승자_두_명() {
 		assertRandomTest(() -> {
 				run("car1,car2,car3", "3");
-				verify("car1 : --"
-					, "car2 : ---"
-					, "car3 : ---"
-					, "최종 우승자는 car2,car3 입니다.");
-			}, STOP, MOVING_FORWARD, MOVING_FORWARD
-			, MOVING_FORWARD, MOVING_FORWARD, MOVING_FORWARD
-			, MOVING_FORWARD, MOVING_FORWARD, MOVING_FORWARD
+				verify("car1 : --",
+					"car2 : ---",
+					"car3 : ---",
+					"최종 우승자는 car2,car3 입니다.");
+			}, STOP, MOVING_FORWARD, MOVING_FORWARD,
+			MOVING_FORWARD, MOVING_FORWARD, MOVING_FORWARD,
+			MOVING_FORWARD, MOVING_FORWARD, MOVING_FORWARD
 		);
 	}
 
@@ -67,8 +67,8 @@ public class ApplicationTest extends NSTest {
 	@ParameterizedTest
 	@DisplayName("유저 입력 차 이름 빈칸 값 에러 메세지 출력 테스트")
 	@ValueSource(strings = {
-		" ", " ,", ", ", ",,", " , , ,"
-		, "car1,,car3"
+		" ", " ,", ", ", ",,", " , , ,",
+		"car1,,car3"
 	})
 	void 유저_입력_차_이름_빈칸_에러_메세지_출력(String userInputCars) {
 		assertSimpleTest(() -> {

@@ -96,9 +96,9 @@ public class CarRacingGameTest {
 			mockRandoms
 				.when(() -> Randoms.pickNumberInRange(anyInt(), anyInt()))
 				.thenReturn(
-					1, 4, 9 /* first */
-					, 0, 3, 7 /* second */
-					, 5, 5, 2 /* third */);
+					1, 4, 9, /* first */
+					0, 3, 7, /* second */
+					5, 5, 2 /* third */);
 
 			CarRacingRecords records = game.run();
 
