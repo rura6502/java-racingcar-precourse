@@ -44,8 +44,8 @@ public class MessagePrinter {
 	}
 
 	public static void print(Car car) {
-		println(String.format(PRINT_CAR_AND_SCORE_FORMAT
-			, car.getName(), positionToDash(car.getPosition())));
+		println(String.format(PRINT_CAR_AND_SCORE_FORMAT,
+			car.getName(), positionToDash(car.getPosition())));
 	}
 
 	private static String getWinnerPrintMessage(Collection<Car> winners) {
