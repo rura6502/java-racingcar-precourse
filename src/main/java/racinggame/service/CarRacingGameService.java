@@ -1,5 +1,6 @@
 package racinggame.service;
 
+import static racinggame.Application.*;
 import static racinggame.service.message.CarRacingGameMessage.*;
 import static racinggame.service.message.MessagePrinter.*;
 import static racinggame.service.validation.UserInputRegex.*;
@@ -44,17 +45,17 @@ public class CarRacingGameService {
 
 	private String removePrePostSeparator(String inputCars) {
 		String removedInputCars = inputCars;
-		while (removedInputCars.startsWith(",")) {
+		while (removedInputCars.startsWith(CAR_LIST_SEPARATOR)) {
 			removedInputCars = removedInputCars.substring(1);
 		}
-		while (removedInputCars.endsWith(",")) {
+		while (removedInputCars.endsWith(CAR_LIST_SEPARATOR)) {
 			removedInputCars = removedInputCars.substring(0, removedInputCars.length() - 1);
 		}
 		return removedInputCars;
 	}
 
 	private Cars makeCars(String input) {
-		String[] carStrs = input.split(",");
+		String[] carStrs = input.split(CAR_LIST_SEPARATOR);
 		Cars cars = new Cars(carStrs);
 		return cars;
 	}

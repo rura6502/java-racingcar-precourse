@@ -1,5 +1,6 @@
 package racinggame.service.message;
 
+import static racinggame.Application.*;
 import static racinggame.service.message.CarRacingGameMessage.*;
 
 import java.util.Collection;
@@ -63,7 +64,7 @@ public class MessagePrinter {
 	private static String joinWinnersCarName(Collection<Car> winners) {
 		StringBuilder joinedWinnersCarNameBuilder = new StringBuilder();
 		for (Car car : winners) {
-			joinedWinnersCarNameBuilder.append(car.getName()).append(",");
+			joinedWinnersCarNameBuilder.append(car.getName()).append(CAR_LIST_SEPARATOR);
 		}
 		return joinedWinnersCarNameBuilder.substring(0, joinedWinnersCarNameBuilder.length() - 1);
 	}
