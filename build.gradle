@@ -1,8 +1,8 @@
 plugins {
-    id 'java'
+	id 'java'
 
-    id 'org.ec4j.editorconfig' version '0.0.3'
-    id 'checkstyle'
+	id 'org.ec4j.editorconfig' version '0.0.3'
+	id 'checkstyle'
 }
 
 group 'camp.nextstep.edu'
@@ -14,45 +14,45 @@ compileJava.options.encoding = 'UTF-8'
 compileTestJava.options.encoding = 'UTF-8'
 
 repositories {
-    mavenCentral()
+	mavenCentral()
 }
 
 dependencies {
-    testImplementation 'org.assertj:assertj-core:3.19.0'
-    testImplementation 'org.junit.jupiter:junit-jupiter:5.7.1'
-    testImplementation 'org.mockito:mockito-inline:3.6.0'
+	testImplementation 'org.assertj:assertj-core:3.19.0'
+	testImplementation 'org.junit.jupiter:junit-jupiter:5.7.1'
+	testImplementation 'org.mockito:mockito-inline:3.6.0'
 }
 
 test {
-    useJUnitPlatform()
-    testLogging {
-        afterSuite { desc, result ->
-            if (!desc.parent) {
-                def output = "Results: ${result.resultType} (${result.testCount} tests, ${result.successfulTestCount} passed, ${result.failedTestCount} failed, ${result.skippedTestCount} skipped)"
-                def startItem = '|  ', endItem = '  |'
-                def repeatLength = startItem.length() + output.length() + endItem.length()
-                println('\n' + ('-' * repeatLength) + '\n' + startItem + output + endItem + '\n' + ('-' * repeatLength))
-            }
-        }
-    }
+	useJUnitPlatform()
+	testLogging {
+		afterSuite { desc, result ->
+			if (!desc.parent) {
+				def output = "Results: ${result.resultType} (${result.testCount} tests, ${result.successfulTestCount} passed, ${result.failedTestCount} failed, ${result.skippedTestCount} skipped)"
+				def startItem = '|  ', endItem = '  |'
+				def repeatLength = startItem.length() + output.length() + endItem.length()
+				println('\n' + ('-' * repeatLength) + '\n' + startItem + output + endItem + '\n' + ('-' * repeatLength))
+			}
+		}
+	}
 }
 
 /* manifest setting */
 jar {
-    manifest {
-        attributes 'Main-Class': 'racinggame.Application'
-    }
+	manifest {
+		attributes 'Main-Class': 'racinggame.Application'
+	}
 }
 
 /* editorconfig setting */
 editorconfig {
-    excludes = ['build']
+	excludes = ['build']
 }
 check.dependsOn editorconfigCheck
 
 /* checkstyle setting */
 checkstyle {
-    configFile = file("${rootDir}/naver-checkstyle-rules.xml")
-    configProperties = ["suppressionFile": "${rootDir}/naver-checkstyle-suppressions.xml"]
-    toolVersion = "8.24"  // checkstyle 버전 8.24 이상 선언
+	configFile = file("${rootDir}/naver-checkstyle-rules.xml")
+	configProperties = ["suppressionFile": "${rootDir}/naver-checkstyle-suppressions.xml"]
+	toolVersion = "8.24"  // checkstyle 버전 8.24 이상 선언
 }
