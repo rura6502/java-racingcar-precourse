@@ -40,6 +40,7 @@ public class CarRacingGameTest {
 	}
 
 	@Test
+	@DisplayName("단일 게임 결과 포지션 값 증가 정상 테스트")
 	void 단일_게임_진행_차_포지션_결과_테스트() {
 
 		Cars cars = new Cars("car1", "car2", "car3");
@@ -61,6 +62,7 @@ public class CarRacingGameTest {
 	}
 
 	@Test
+	@DisplayName("단일 게임 결과 레코드 값 정상 기록 확인 테스트")
 	void 단일_게임_결과_CarRacingRecord_반환_테스트() {
 
 		Cars cars = new Cars("car1", "car2", "car3");
@@ -88,6 +90,7 @@ public class CarRacingGameTest {
 	}
 
 	@Test
+	@DisplayName("전체 게임(다중 횟수) 게임 결과 레코드 값 정상 기록 확인 테스트")
 	void 전체_게임_결과_CarRacingRecords_반환_테스트() {
 
 		Cars cars = new Cars("car1", "car2", "car3");

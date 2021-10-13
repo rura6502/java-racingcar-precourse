@@ -2,6 +2,7 @@ package racinggame;
 
 import org.junit.jupiter.api.AfterEach;
 import org.junit.jupiter.api.BeforeEach;
+import org.junit.jupiter.api.DisplayName;
 import org.junit.jupiter.api.Test;
 
 import nextstep.test.NSTest;
@@ -18,6 +19,7 @@ public class ApplicationTest extends NSTest {
 	}
 
 	@Test
+	@DisplayName("게임 진행 최종 우승자 검증 테스트")
 	void 전진_정지() {
 		assertRandomTest(() -> {
 			run("pobi,woni", "1");
@@ -26,6 +28,7 @@ public class ApplicationTest extends NSTest {
 	}
 
 	@Test
+	@DisplayName("차 이름 6글자 초과 값 테스트")
 	void 이름에_대한_예외_처리() {
 		assertSimpleTest(() -> {
 			runNoLineFound("pobi,javaji");
