@@ -4,6 +4,7 @@ import nextstep.utils.Randoms;
 import racinggame.domain.car.Car;
 import racinggame.domain.car.CarCommand;
 import racinggame.domain.record.CarRacingRecord;
+import racinggame.domain.record.CarRacingRecords;
 
 public class CarRacingGame {
 
@@ -11,6 +12,14 @@ public class CarRacingGame {
 
 	public CarRacingGame(CarRacingGameConfig config) {
 		this.config = config;
+	}
+
+	public CarRacingRecords run() {
+		CarRacingRecords records = new CarRacingRecords();
+		for (int i = 0; i < config.getTryCount(); i++) {
+			records.addNewRecord(this.runOneTime());
+		}
+		return records;
 	}
 
 	public CarRacingRecord runOneTime() {

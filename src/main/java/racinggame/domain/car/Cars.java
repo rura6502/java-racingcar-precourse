@@ -1,7 +1,9 @@
 package racinggame.domain.car;
 
+import java.util.ArrayList;
 import java.util.Collection;
 import java.util.LinkedHashMap;
+import java.util.List;
 import java.util.Map;
 
 public class Cars {
@@ -40,6 +42,17 @@ public class Cars {
 		}
 
 		return cars.get(carName);
+	}
+
+	public Collection<Car> getCarsByPosition(int position) {
+		List<Car> cars = new ArrayList<>();
+		//!TODO warning, depth level is 2
+		for (Car car : getAllCars()) {
+			if (car.getPosition() == position) {
+				cars.add(car);
+			}
+		}
+		return cars;
 	}
 
 	public Collection<Car> getAllCars() {
