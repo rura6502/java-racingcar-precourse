@@ -2,6 +2,7 @@ package racinggame.service;
 
 import static racinggame.service.message.CarRacingGameMessage.*;
 import static racinggame.service.message.MessagePrinter.*;
+import static racinggame.service.validation.UserInputRegex.*;
 
 import nextstep.utils.Console;
 import racinggame.domain.car.Cars;
@@ -47,15 +48,18 @@ public class CarRacingGameService {
 	}
 
 	private boolean isValidInputTryCount(String inputTryCount) {
-		if (inputTryCount.matches("^\\d+$")) {
-			return true;
+		try {
+			Integer.parseInt(inputTryCount);
+		} catch (NumberFormatException e) {
+			error(ERROR_ONLY_NUMBER);
+			return false;
 		}
-		error(ERROR_ONLY_NUMBER);
-		return false;
+		return true;
+
 	}
 
 	private boolean isValidInputCars(String inputCars) {
-		if (inputCars.matches("^(\\s*\\w+\\s*)(,\\s*\\w+\\s*)*$")) {
+		if (inputCars.matches(INPUT_CARS_REGEX)) {
 			return true;
 		}
 		error(ERROR_ONLY_CAR_NAMES_WITH_COMMA_SEPERATOR);
